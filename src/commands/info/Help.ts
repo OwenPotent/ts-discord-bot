@@ -13,7 +13,7 @@ export default class HelpCommand extends Command {
     constructor(client: DiscordClient) {
         super(client, {
             name: 'help',
-            group: 'General',
+            group: 'Info',
             description: 'Shows information about commands and groups.',
             cooldown: 30
         });
@@ -74,31 +74,31 @@ export default class HelpCommand extends Command {
             fields: [
                 {
                     name: 'Name',
-                    value: command.info.name
+                    value: `\`${command.info.name}\``
                 },
                 {
                     name: 'Group',
-                    value: command.info.group
+                    value: `\`${command.info.group}\``
                 },
                 {
                     name: 'Cooldown',
-                    value: command.info.cooldown ? formatSeconds(command.info.cooldown) : 'No cooldown'
+                    value: command.info.cooldown ? `\`${formatSeconds(command.info.cooldown)}\`` : '`No cooldown`'
                 },
                 {
                     name: 'Usable At',
-                    value: command.info.onlyNsfw ? 'NSFW channels' : 'All text channels'
+                    value: command.info.onlyNsfw ? '`NSFW channels`' : '`All text channels`'
                 },
                 {
                     name: 'Aliases',
-                    value: command.info.aliases ? command.info.aliases.map(x => `\`${x}\``).join(' ') : 'No aliases'
+                    value: command.info.aliases ? command.info.aliases.map(x => `\`${x}\``).join(' ') : '`No aliases`'
                 },
                 {
                     name: 'Example Usages',
-                    value: command.info.examples ? command.info.examples.map(x => `\`${x}\``).join('\n') : 'No examples'
+                    value: command.info.examples ? command.info.examples.map(x => `\`${x}\``).join('\n') : '`No examples`'
                 },
                 {
                     name: 'Description',
-                    value: command.info.description ? command.info.description : 'No description'
+                    value: command.info.description ? `\`${command.info.description}\`` : '`No description`'
                 }
             ]
         });
